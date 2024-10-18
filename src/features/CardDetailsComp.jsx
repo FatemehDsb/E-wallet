@@ -6,16 +6,17 @@ import { useNavigate } from "react-router-dom";
 import InputComponent from "../components/InputComponent";
 
 
-let CardDetailsComp = ({card})=>{
+let CardDetailsComp = ({card, id, setCard})=>{
     const dispatch = useDispatch();
     const navigate =  useNavigate();
+
+    
 
     const handleSetActive = (id)=>{
         dispatch(setActiveCard(id))
     }
 
     const activeCardId = useSelector((state) => state.cardreducer.activeCardId)
-    console.log(activeCardId);
 
     const handleDeleteCard = (id)=>{
         if(id === activeCardId){
@@ -25,20 +26,22 @@ let CardDetailsComp = ({card})=>{
         dispatch(SetDeleteCard(id));
         navigate('/')
     }
+ 
+    const cardsArr = useSelector((state)=> state.cardreducer.cards)
+    const selectedCard = cardsArr.find((card) => card.id === id);
+
+
+
 
     const handleInputChange = (e)=>{
         const {name, value}= e.target
-    
-        if (name === "cardHolder"){
-            const nameContainsNumber = /\d/.test(value);
-            if(nameContainsNumber){
-                alert ("cardholder name cannot contain numbers")
-                return;
-            }
+        setCard({...card, [name]: value, })
+       
+     
+        console.log("edited card " ,selectedCard);
+        //get values again from input fields
 
-            dispatch(addNewCard(card.name))
-        }
-
+        dispatch(addNewCard())
 
    
 }

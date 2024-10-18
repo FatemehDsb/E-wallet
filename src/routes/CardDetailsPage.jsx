@@ -21,7 +21,8 @@ if (!card) {
         <>
         <Link to ="/"> HOME </Link>
         <h3>Card detail page{id}</h3>
-        <CardDetailsComp  card = {card}/>
+        <CardDetailsComp  card = {card} id={id} setCard= {setCard}
+        />
         </>
     )
 
