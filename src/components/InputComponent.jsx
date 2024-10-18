@@ -1,10 +1,11 @@
 
-let InputComponent = ({type, placeholder, value, onChange})=>{
+let InputComponent = ({type, placeholder,name,  value, onChange})=>{
     return(
         <input 
         type={type}
         placeholder={placeholder}
-        value={value}
+        name={name}  
+        value={value || "" }
         onChange={onChange}
         />
     )
