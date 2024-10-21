@@ -9,11 +9,11 @@ const numberId = parseInt(id, 10);
 
 
 
-const card = useSelector ((state)=> 
+const selectedCard = useSelector ((state)=> 
     state.cardreducer.cards.find ((card)=> card.id ===numberId)
 );
 
-if (!card) {
+if (!selectedCard) {
     return <p>Card not found!</p>;
   };
 
@@ -21,8 +21,7 @@ if (!card) {
         <>
         <Link to ="/"> HOME </Link>
         <h3>Card detail page{id}</h3>
-        <CardDetailsComp  card = {card} id={id} setCard= {setCard}
-        />
+        <CardDetailsComp  selectedCard = {selectedCard}/>
         </>
     )
 

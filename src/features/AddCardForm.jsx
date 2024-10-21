@@ -3,12 +3,13 @@ import { useState, useEffect} from "react";
 import InputComponent from "../components/InputComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {addNewCard} from "../redux/cardsSlice"
+import { useNavigate } from "react-router-dom";
 
 let AddCardForm = ({card, setCard})=>{
 
 const [cardsArr, setCardsArr]= useState([]);
 const dispath = useDispatch();
-
+const navigate = useNavigate();
 
 const handleInputChange = (e)=>{
     const {name, value}= e.target
@@ -57,6 +58,7 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
         
         setCardsArr([...cardsArr, card])
         dispath(addNewCard(card))
+        navigate("/");
         // console.log("dispatched Cards:", card);
     }
 
@@ -114,13 +116,6 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
             value={card.expirationYear} 
             onChange={handleInputChange}
             />
-
-            {/* <input type="radio"
-             name="activityStatus"
-            value={card.id}
-            onChange = {() => handleSetActive(card.id)}
-            />
-            <label>Activate card</label> */}
 
             
 

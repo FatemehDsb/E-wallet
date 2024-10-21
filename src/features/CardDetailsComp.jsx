@@ -1,73 +1,89 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import Button from  "../components/Button";
-import {setActiveCard, SetDeleteCard , addNewCard} from  "../redux/cardsSlice"
+import {setActiveCard, setDeactiveCard, SetDeleteCard , updateCard} from  "../redux/cardsSlice"
 import { useNavigate } from "react-router-dom";
 import InputComponent from "../components/InputComponent";
+import { useState } from "react";
+import CardInput from "./CardInput";
 
 
-let CardDetailsComp = ({card, id, setCard})=>{
+
+let CardDetailsComp = ({selectedCard})=>{
+    
     const dispatch = useDispatch();
     const navigate =  useNavigate();
 
-    
+    const activeCardId = useSelector((state)=> state.cardreducer.activeCardId)
 
-    const handleSetActive = (id)=>{
-        dispatch(setActiveCard(id))
+    const [editedCard, setEditedCard] = useState(selectedCard)
+    
+    const handleSetActive = ()=>{
+        if(selectedCard.id ===activeCardId){
+            dispatch(setDeactiveCard(selectedCard.id));
+        }else{
+
+            dispatch(setActiveCard(selectedCard.id))
+        }
     }
 
-    const activeCardId = useSelector((state) => state.cardreducer.activeCardId)
-
-    const handleDeleteCard = (id)=>{
-        if(id === activeCardId){
+    const handleDeleteCard = ()=>{
+        if(selectedCard.id === activeCardId){
             alert("Card is active and cannot be deleted!");
             return;
         }
-        dispatch(SetDeleteCard(id));
+        dispatch(SetDeleteCard(selectedCard.id));
         navigate('/')
     }
  
-    const cardsArr = useSelector((state)=> state.cardreducer.cards)
-    const selectedCard = cardsArr.find((card) => card.id === id);
-
-
-
-
     const handleInputChange = (e)=>{
+
         const {name, value}= e.target
-        setCard({...card, [name]: value, })
-       
-     
+        console.log({name}, {value});
+        
         console.log("edited card " ,selectedCard);
-        //get values again from input fields
 
-        dispatch(addNewCard())
+        setEditedCard({...editedCard, [name]: value})
 
-   
-}
+    }
+    
+    const handleSave = ()=>{
+        dispatch(updateCard({id:editedCard.id, cardData: editedCard}));
+        
+    }
 return(
     <>
-        <h1>card{card.id}</h1>
-        <h2> {card.id === activeCardId ? "this card is active " : "not active"}
+        <h1>card{selectedCard.id}</h1>
+        <h2> {selectedCard.id === activeCardId ? "this card is active " : "not active"}
         </h2>
 
+
         <Button
-        label="Activate Card"
-        onClick={()=>handleSetActive(card.id)}
+        label=
+        {selectedCard.id ===activeCardId ? "Deactivate Card" : "Activate Card"}
+        onClick={()=>handleSetActive(selectedCard.id)}
         />
 
         <Button
         label="Delete Card"
-        onClick={()=>handleDeleteCard(card.id)}
+        onClick={()=>handleDeleteCard(selectedCard.id)}
+        />
+        <Button
+        label="save Card"
+        onClick={()=>handleSave(selectedCard.id)}
         />
 
-        <InputComponent  
+        {/* <InputComponent  
         type ="number" 
         placeholder="card Number"
         name="cardNumber"
-        value={card.cardNumber} 
+        value={editedCard.cardNumber} 
         onChange={handleInputChange}
-        />
+        /> */}
+
+        <CardInput editedCard={editedCard} handleInputChange={handleInputChange}/>
+
+        
 
 
     
