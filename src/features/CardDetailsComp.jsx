@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from  "../components/Button";
 import {setActiveCard, setDeactiveCard, SetDeleteCard , updateCard} from  "../redux/cardsSlice"
 import { useNavigate } from "react-router-dom";
-import InputComponent from "../components/InputComponent";
 import { useState } from "react";
 import CardInput from "./CardInput";
+import CardPreviewRender from "./CardPreviewRender";
 
 
 
@@ -37,6 +37,10 @@ let CardDetailsComp = ({selectedCard})=>{
     }
  
     const handleInputChange = (e)=>{
+        if(selectedCard.id === activeCardId){
+            alert("Card is active and cannot be changed!");
+            return;
+        }
 
         const {name, value}= e.target
         console.log({name}, {value});
@@ -57,6 +61,8 @@ return(
         <h2> {selectedCard.id === activeCardId ? "this card is active " : "not active"}
         </h2>
 
+        <CardPreviewRender card={editedCard}/>
+
 
         <Button
         label=
@@ -69,23 +75,11 @@ return(
         onClick={()=>handleDeleteCard(selectedCard.id)}
         />
         <Button
-        label="save Card"
+        label="Update Card"
         onClick={()=>handleSave(selectedCard.id)}
         />
 
-        {/* <InputComponent  
-        type ="number" 
-        placeholder="card Number"
-        name="cardNumber"
-        value={editedCard.cardNumber} 
-        onChange={handleInputChange}
-        /> */}
-
         <CardInput editedCard={editedCard} handleInputChange={handleInputChange}/>
-
-        
-
-
     
     </>
 )

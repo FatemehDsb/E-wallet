@@ -1,3 +1,4 @@
+import CardComponent from "./cardComponent";
 
 
 const CardPreviewRender =({card})=>{
@@ -6,7 +7,7 @@ const CardPreviewRender =({card})=>{
         <>
 
     
-        <div className="card-container">
+        {/* <div className="card-container">
                 <div className="first-line">
                     <p className="card-Issuer">
                     {card.cardIssuer}
@@ -27,8 +28,13 @@ const CardPreviewRender =({card})=>{
                         <p>Valid until</p>
                         <p>{card.expirationDate} </p>
                     </div>
+                    <div>
+                        
+                    </div>
                 </div>
-            </div>
+            </div> */}
+
+            <CardComponent card ={card}/>
         </>
     )
 }

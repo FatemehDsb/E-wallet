@@ -1,5 +1,5 @@
 import InputComponent from "../components/InputComponent";
-const CardInput = ({editedCard}, {handleInputChange} )=>{
+const CardInput = ({editedCard, handleInputChange} )=>{
 
 
     return(
@@ -12,9 +12,9 @@ const CardInput = ({editedCard}, {handleInputChange} )=>{
                             value={editedCard.cardIssuer} 
                              onChange={handleInputChange}>
                                 <option value="">-- Välj Kortutgivare --</option>
-                                <option value="Visa">Visa</option>
-                                <option value="Mastercard">Mastercard</option>
-                                <option value="American Express">American Express</option>
+                                <option value="SEB">SEB</option>
+                                <option value="Nordea">Nordea</option>
+                                <option value="Swedbank">Swedbank</option>
                             </select>
                         </div>
 
@@ -48,6 +48,15 @@ const CardInput = ({editedCard}, {handleInputChange} )=>{
                                 onChange={handleInputChange}
                                 />
                             </div>
+                        </div>
+
+                        <div className="last-line"> 
+                            <InputComponent
+                            type="number"
+                            placeholder="ccv"
+                            name= "ccv"
+                            value={editedCard.ccv}
+                            onChange={handleInputChange}/>
                         </div>
              </div>
         

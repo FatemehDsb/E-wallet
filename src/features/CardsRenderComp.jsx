@@ -13,9 +13,6 @@ let CardRenderComp =()=>{
 const cardsArray = useSelector((state)=> state.cardreducer.cards)
 
 
-useEffect (()=>{
-    console.log("saved card",cardsArray);
-}, [cardsArray])
  
 return(
         <>

@@ -62,16 +62,6 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
         // console.log("dispatched Cards:", card);
     }
 
-    // const handleSetActive = (id)=>{
-    //    dispath(setActiveCard(id))
-
-    // }
-
-    // const activeCardId = useSelector((state)=> state.cardreducer.activeCardId);
-    
-    // useEffect (()=>{
-    //     console.log("active card Id", activeCardId);
-    // }, [activeCardId])
     
 
 
@@ -81,15 +71,14 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
     return(
         <>
         <h2>AddCardFormComponent</h2>
-  
 
             <select name="cardIssuer"
              value={card.cardIssuer} 
             onChange={handleInputChange}>
                 <option value="">-- Välj Kortutgivare --</option>
-                <option value="Visa">Visa</option>
-                <option value="Mastercard">Mastercard</option>
-                <option value="American Express">American Express</option>
+                <option value="SEB">SEB</option>
+                <option value="Nordea">Nordea</option>
+                <option value="Swedbank">Swedbank</option>
             </select>
 
              <InputComponent  
@@ -108,8 +97,6 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
             onChange={handleInputChange}
             />
 
-    
-
            <InputComponent  
             type ="month" 
             name="expirationDate"
@@ -118,6 +105,13 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
             />
 
             
+            <InputComponent
+            type="number"
+            placeholder="ccv"
+            name= "ccv"
+            value={card.ccv}
+            onChange={handleInputChange}/>
+       
 
 
             <button onClick={handleSavedCard}>Save the card</button>
