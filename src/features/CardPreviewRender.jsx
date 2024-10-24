@@ -1,4 +1,4 @@
-import CardComponent from "./cardComponent";
+import CardComponent from "./CardComponent";
 
 
 const CardPreviewRender =({card})=>{
