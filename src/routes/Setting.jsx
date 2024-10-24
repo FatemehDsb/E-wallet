@@ -22,26 +22,29 @@ const Setting = ()=>{
 
     return(
         <>
-        <Navbar/>
-        <label>Select your theme</label>
-        <select value={theme} onChange={handleChangeTheme}>
-            <option
-            value=""
-            >Theme</option>
+            <Navbar/>
+            <div className="theme-div">
 
-            <option
-            value="authumn"
-            >Authum</option>
+                <label>Select your theme: </label>
+                <select value={theme} onChange={handleChangeTheme} >
+                    <option
+                    value=""
+                    >Theme</option>
 
-            <option
-             value="dark"
-             >Dark</option>
+                    <option
+                    value="authumn"
+                    >Authum</option>
 
-            <option 
-            value="light"
-            >
-            Light</option>
-        </select>
+                    <option
+                    value="dark"
+                    >Dark</option>
+
+                    <option 
+                    value="light"
+                    >
+                    Light</option>
+                </select>
+            </div>
         </>
     )
 }

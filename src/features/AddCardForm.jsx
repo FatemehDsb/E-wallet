@@ -40,10 +40,10 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
        const[expYear , expMonth ] = card.expirationDate.split("-").map(Number)
 
         //cardNumber validation
-        // if (card.cardNumber.length !==16){
-        //     alert("wrong card number! ")
-        //     return;
-        // }
+        if (card.cardNumber.length !==16){
+            alert("wrong card number! ")
+            return;
+        }
         //Date and month validation
         if( expYear<currentYear || (expYear===currentYear && expMonth<currentMonth)){
             alert("Your card is not valid");

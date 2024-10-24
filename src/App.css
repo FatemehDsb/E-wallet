@@ -13,9 +13,6 @@
   background-color: #2449713a;
   border-radius: 12px;
 }
-a{
-  color: #000000;
-}
 
 
 .app-container {
@@ -286,4 +283,18 @@ a{
 .update-btn{
   background-color: rgb(64, 255, 0);
 }
+
+.theme-div{
+  
+  margin-bottom: 20px;
+  margin: 30px;
+  select{
+    margin-bottom: 20px;
+  }
+  label{
+   font-weight: bold;
+  }
+
+}
+
 
