@@ -1,5 +1,4 @@
 
-import { Link } from "react-router-dom";
 import AddCardForm from "../features/AddCardForm";
 import CardPreviewRender from "../features/CardPreviewRender";
 import { useState } from "react";
@@ -22,9 +21,9 @@ const [card, setCard ] = useState({
 
     return(
         <>
-        <h1>Add Card Page</h1>
         <Navbar/>
         <CardPreviewRender card={card}/>
+        <h3>Add Cards</h3>
         <AddCardForm card={card} setCard={setCard}/>
         </>
     )

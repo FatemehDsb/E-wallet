@@ -1,9 +1,9 @@
 
-let Button = ({label, onClick})=>{
+let Button = ({label, onClick, className})=>{
 
     return(
         <>
-        <button 
+        <button className={className}
         onClick={onClick}>
         {label}
         </button>

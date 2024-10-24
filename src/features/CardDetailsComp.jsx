@@ -57,12 +57,14 @@ let CardDetailsComp = ({selectedCard})=>{
     }
 return(
     <>
-        <h1>card{selectedCard.id}</h1>
-        <h2> {selectedCard.id === activeCardId ? "this card is active " : "not active"}
+        {/* <h1>card{selectedCard.id}</h1> */}
+        <h2> {selectedCard.id === activeCardId ? "Active Card" : "Card is not active"}
         </h2>
 
         <CardPreviewRender card={editedCard}/>
 
+
+<div className="btn-div">
 
         <Button
         label=
@@ -70,14 +72,17 @@ return(
         onClick={()=>handleSetActive(selectedCard.id)}
         />
 
-        <Button
+        <Button 
+        className="delete-btn"
         label="Delete Card"
         onClick={()=>handleDeleteCard(selectedCard.id)}
         />
         <Button
-        label="Update Card"
+        label="Update Card" 
+        className="update-btn"
         onClick={()=>handleSave(selectedCard.id)}
         />
+    </div>
 
         <CardInput editedCard={editedCard} handleInputChange={handleInputChange}/>
     

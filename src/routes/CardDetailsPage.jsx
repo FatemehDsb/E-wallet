@@ -1,13 +1,12 @@
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import CardDetailsComp from "../features/CardDetailsComp";
-import Navigation from "../components/Navigation";
 import Navbar from "../components/Navbar";
 
 let CardDetailsPage =()=>{
 const {id} = useParams();
 const numberId = parseInt(id, 10);
-const navigate = useNavigate();
+
 
 
 
@@ -22,7 +21,7 @@ if (!selectedCard) {
 
         <>
         <p>Card not found!</p>
-        <Navigation/>
+        <Navbar/>
         </>
     )
     
@@ -32,7 +31,7 @@ if (!selectedCard) {
     return(
         <>
         <Navbar/>
-        <h3>Card detail page{id}</h3>
+        {/* <h3>Card detail page{id}</h3> */}
         <CardDetailsComp  selectedCard = {selectedCard}/>
         </>
     )

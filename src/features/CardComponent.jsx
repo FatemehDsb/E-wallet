@@ -42,16 +42,18 @@ let CardComponent =({card})=>{
                                 <p className="card-holder-title">{card.cardHolder}</p>
                             </div>
 
-                            <div>
-                                <p>Valid until</p>
-                                <p>{card.expirationDate}</p>
-                            </div>
                         </div>
 
-                        <div className="last-line">
-                            <p>CCV:{card.ccv}</p>
-                        </div>
-             </div>
+                            <div className="last-line">
+                                <div >
+                                    <p>Valid until</p>
+                                    <p>{card.expirationDate}</p>
+                                </div>
+                                <div>
+                                    <p>CCV:{card.ccv}</p>
+                                </div>
+                            </div>
+                </div>
         </>
     )
 }

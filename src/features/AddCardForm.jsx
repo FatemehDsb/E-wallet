@@ -70,11 +70,11 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
 
     return(
         <>
-        <h2>AddCardFormComponent</h2>
+         <div className="add-card-form">
 
             <select name="cardIssuer"
              value={card.cardIssuer} 
-            onChange={handleInputChange}>
+             onChange={handleInputChange}>
                 <option value="">-- Välj Kortutgivare --</option>
                 <option value="SEB">SEB</option>
                 <option value="Nordea">Nordea</option>
@@ -116,6 +116,7 @@ const cardsArrayFromState = useSelector((state)=>(state.cardreducer.cards))
 
             <button onClick={handleSavedCard}>Save the card</button>
       
+            </div>
          </>
     )
 }
